@@ -5,8 +5,7 @@ namespace ApiColegio.Application.Features.Users.Commands.CreateUser;
 public record CreateUserCommand(
    string FirstName,
    string LastName,
-   DateOnly DateOfBirth,
+   DateTime DateOfBirth,
    string PhoneNumber,
    string Role,
-   DateOnly StartDate,
-   bool Status) : ICommand;
+   DateTime StartDate) : ICommand;

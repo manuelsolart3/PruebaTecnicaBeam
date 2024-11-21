@@ -6,14 +6,14 @@ public class User : IdentityUser
 {
     public string FirstName { get; set; }
     public string LastName { get; set; }
-    public DateOnly DateOfBirth { get; set; }
+    public DateTime DateOfBirth { get; set; }
     public string PhoneNumber { get; set; }
     public string Role { get; set; }
-    public DateOnly StartDate { get; set; }
+    public DateTime StartDate { get; set; }
     public bool Status { get; set; }
 
 
-    public User(string firstName,string lastName, DateOnly dateOfBirth, string phoneNumber, string role, DateOnly startDate)
+    public User(string firstName,string lastName, DateTime dateOfBirth, string phoneNumber, string role, DateTime startDate)
     {
         FirstName = firstName;
         LastName = lastName;
@@ -28,10 +28,10 @@ public class User : IdentityUser
     public static User Create(
         string firstName,
         string lastName, 
-        DateOnly dateOfBirth,
+        DateTime dateOfBirth,
         string phoneNumber, 
         string role,
-        DateOnly startDate)
+        DateTime startDate)
     {
         return new User(
             firstName,

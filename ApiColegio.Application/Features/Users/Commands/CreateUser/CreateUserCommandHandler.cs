@@ -26,6 +26,7 @@ public class CreateUserCommandHandler : ICommandHandler<CreateUserCommand>
             request.PhoneNumber,
             request.Role,
             request.StartDate);
+        user.UserName = request.FirstName;
 
         var result = await _userManager.CreateAsync(user);
 
