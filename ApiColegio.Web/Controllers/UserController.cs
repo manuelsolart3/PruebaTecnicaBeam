@@ -25,6 +25,7 @@ public class UserController : ControllerBase
     }
 
     [HttpPost]
+    [AllowAnonymous]
     public async Task<IActionResult> CreateUser(CreateUserCommand command)
     {
         var result = await _mediator.Send(command);
