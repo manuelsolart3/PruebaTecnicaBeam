@@ -1,4 +1,5 @@
 ﻿using ApiColegio.Application.Abstractions.Behaviors;
+using ApiColegio.Application.Authentication;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -16,6 +17,7 @@ public static class ApplicationServices
         });
         services.AddValidatorsFromAssembly(typeof(ApplicationServices).Assembly);
         services.AddAutoMapper(typeof(ApplicationServices).Assembly);
+        services.AddScoped<JwtTokenService>();
 
         return services;
     }

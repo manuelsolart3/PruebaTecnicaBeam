@@ -1,15 +1,18 @@
 ﻿using ApiColegio.Application.Features.Users.Commands.CreateUser;
 using ApiColegio.Application.Features.Users.Commands.DeleteUser;
+using ApiColegio.Application.Features.Users.Commands.LoginUser;
 using ApiColegio.Application.Features.Users.Commands.UpdateUser;
 using ApiColegio.Application.Features.Users.Queries.GetActiveUsers;
 using ApiColegio.Application.Features.Users.Queries.GetUserByName;
 using ApiColegio.Application.Features.Users.Queries.GetUsersByRole;
 using ApiColegio.Domain.Abstractions;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApiColegio.Web.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class UserController : ControllerBase
@@ -118,5 +121,15 @@ public class UserController : ControllerBase
         }
 
         return BadRequest(result.Error);
+    }
+    [HttpPost("login")]
+    [AllowAnonymous]
+    public async Task<IActionResult> Login([FromBody] LoginUserCommand command, CancellationToken cancellationToken)
+    {
+        var result = await _mediator.Send(command, cancellationToken);
+
+        return result.IsSuccess
+            ? Ok(new { Token = result.Data })
+            : BadRequest(new { Error = result.ErrorCode });
     }
 }
