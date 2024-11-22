@@ -1,6 +1,6 @@
 ﻿namespace ApiColegio.Domain.Abstractions;
-public record Pageable<T>(
-    int PageNumber,
-    int PageSize,
-    int TotalCount,
-    IList<T> List) where T : class;
+public class Pageable
+{
+    public IEnumerable<object> ResultList { get; set; }
+    public int Count { get; set; }
+}

@@ -20,8 +20,4 @@
     <ProjectReference Include="..\ApiColegio.Domain\ApiColegio.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\Users\Queries\" />
-  </ItemGroup>
-
 </Project>

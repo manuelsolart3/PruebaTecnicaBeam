@@ -3,7 +3,7 @@
 namespace ApiColegio.Application.Features.Users.Commands.UpdateUser;
 
 public record UpdateUserCommand(
-    Guid Id,
+    string Id,
     string? FirstName,
     string? LastName,
     DateTime? DateOfBirth,
